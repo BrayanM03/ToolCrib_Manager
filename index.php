@@ -46,7 +46,7 @@ session_start();
 
                     <div class="row mb-2">
                         <div class="col-12 col-md-6">
-                            <h1 class="h3 mb-3">Inventario de aires</h1>
+                            <h1 class="h3 mb-3">Inventario</h1>
                         </div>
                         <div class="col-12 col-md-6 text-end">
                             <a href="agregar-producto.php"><div class="btn btn-success">Agregar nuevo</div></a>
@@ -59,7 +59,7 @@ session_start();
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title mb-0">Aires en el catalogo</h5>
+                                    <h5 class="card-title mb-0">En esta tabla se encuentra el material</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">

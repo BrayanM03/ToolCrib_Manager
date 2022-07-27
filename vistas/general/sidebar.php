@@ -110,7 +110,7 @@
 
 
 
-            <li class="sidebar-header">
+         <!--    <li class="sidebar-header">
                 Personas
             </li>
 
@@ -128,7 +128,7 @@
                 <a class="sidebar-link" href="token.php">
                     <i class="align-middle" data-feather="heart"></i> <span class="align-middle">Token</span>
                 </a>
-            </li>
+            </li> -->
 <!-- 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="maps-google.html">
