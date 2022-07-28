@@ -77,20 +77,11 @@
                             <div id="collapse<?php echo $row["id"] ?>" class="accordion-collapse collapse" style="margin-left:13px;" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <li class="sidebar-item">
-                                        <a class="sidebar-link" href="inventario.php?store_id=<?php echo $row['id'] ?>&name=<?php echo $row['nombre'] ?>">
-                                            <i class="align-middle" data-feather="cloud-snow"></i> <span class="align-middle">Aires</span>
+                                        <a class="sidebar-link" href="index.php?store_id=<?php echo $row['id'] ?>&name=<?php echo $row['nombre'] ?>">
+                                            <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Aires</span>
                                         </a>
                                     </li>
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link" href="refacciones.php?store_id=<?php echo $row['id'] ?>&name=<?php echo $row['nombre'] ?>">
-                                            <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Refacciones</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link" href="servicios.php?store_id=<?php echo $row['id'] ?>&name=<?php echo $row['nombre'] ?>">
-                                            <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Servicios</span>
-                                        </a>
-                                    </li>
+                                   
                                 </div>
                             </div>
 

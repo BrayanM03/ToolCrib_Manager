@@ -14,11 +14,31 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 
-	<title>Sign In | AdminKit Demo</title>
+	<title>Iniciar sesión | Toolcrib Manager</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<style>
+		.preloader {
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid #eee;
+  border-top: 2.5px solid tomato;
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+	</style>
 </head>
 
 <body>
@@ -39,7 +59,7 @@
 							<div class="card-body">
 								<div class="m-sm-4">
 									<div class="text-center">
-										<img src="img/avatars/mascota.png" alt="Charles Hall" class="img-fluid" width="100" height="100" />
+										<img src="img/logo.jpg" alt="Charles Hall" class="img-fluid" width="100" height="100" />
 									</div>
 									<form>
 										<div class="mb-3">
@@ -61,8 +81,8 @@
 												</span>
 											</label>
 										</div>
-										<div class="text-center mt-3">
-											<a href="#validando" class="btn btn-lg btn-primary" onclick="iniciarSesion()">Entrar</a>
+										<div class="text-center mt-3" style="display:flex; justify-content:center">
+											<a href="#validando" class="btn btn-lg btn-primary" id="btn-login" style="width:130px; display:flex; justify-content:center" onclick="iniciarSesion()">Entrar</a>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
 										</div>
 									</form>

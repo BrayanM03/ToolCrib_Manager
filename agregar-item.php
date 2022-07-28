@@ -23,11 +23,17 @@ session_start();
     <title>Inventario clima | AireEx manager</title>
 
     <link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" />
 
+
+    <!-- Librerias del plugin input file bootstrap -->
+    <!-- <link href="vendor/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="vendor/bootstrap-fileinput-master/themes/explorer-fa5/theme.css" media="all" rel="stylesheet" type="text/css"/>
+    -->
 </head>
 
 <body>
@@ -44,12 +50,9 @@ session_start();
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <div class="row mb-2">
+                    <div class="row mb-2 justify-content-center">
                         <div class="col-12 col-md-6">
-                            <h1 class="h3 mb-3">Inventario Toolcrib</h1>
-                        </div>
-                        <div class="col-12 col-md-6 text-end">
-                            <a href="agregar-item.php"><div class="btn btn-success">Registrar nuevo</div></a>
+                            <h1 class="h3 mb-3">Registrar nuevo material/herramienta al inventario</h1>
                         </div>
                     </div>
 
@@ -57,27 +60,13 @@ session_start();
 
                     <div class="row">
                         <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">En esta tabla se encuentra el material</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 col-md-12">
-                                            <table id="example" class="table table-hover nowrap" style="width:100%">
-                                            <!-- <thead>
-                                                <tr>
-                                                    <th>Subscriber ID</th>
-                                                    <th>Install Location</th>
-                                                    <th>Subscriber Name</th>
-                                                    <th>some data</th>
-                                                </tr>
-                                            </thead> -->
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          
+                               
+                                
+                                            <?php include 'vistas/inventario/registrar-nuevo.php'?>
+                                      
+                              
+                           
                         </div>
                     </div>
 
@@ -118,13 +107,28 @@ session_start();
     <script src="js/app.js"></script>
 
     <!-- Librerias -->
+
+   <!--  <script src="vendor/bootstrap-fileinput-master/js/plugins/buffer.min.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/plugins/filetype.min.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/plugins/piexif.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/fileinput.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/locales/fr.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/locales/es.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/themes/gly/theme.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/themes/fa5/theme.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/themes/explorer-fa5/theme.js" type="text/javascript"></script>
+    <script>$.fn.fileinput.defaults.theme = 'gly';</script>
+     -->
     <script src="https://kit.fontawesome.com/31a28ea63e.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
     <!-- Mis scripts -->
-    <script src="js/inventario/traer-inventario.js"></script>
+    <script src="js/inventario/agregar-item.js"></script>
     <!-- <script src="js/clientes/traer-lista.js"></script>
     <script src="js/clientes/eliminar-cliente.js"></script>
  -->

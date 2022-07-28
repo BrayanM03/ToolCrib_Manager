@@ -20,14 +20,41 @@ session_start();
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-    <title>Inventario clima | AireEx manager</title>
+    <title>Subir imagen | Toolcrib manager</title>
 
     <link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
+  <style>
+
+    .dropzone{
+        border: 2px dashed #c3c3c3;
+        padding: 40px;
+       
+    }
+
+    .icon i{
+        font-size: 3em;
+        text-align: center;
+        color: #696767;
+        background-color: #dfdddd;
+        height: 100px;
+        width: 100px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+        padding: 25px 20px; 
+    }
+
+    .note{
+        color: #40405b;
+    }
+    
+  </style>
 </head>
 
 <body>
@@ -44,40 +71,30 @@ session_start();
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <div class="row mb-2">
-                        <div class="col-12 col-md-6">
-                            <h1 class="h3 mb-3">Inventario Toolcrib</h1>
-                        </div>
-                        <div class="col-12 col-md-6 text-end">
-                            <a href="agregar-item.php"><div class="btn btn-success">Registrar nuevo</div></a>
+                    <div class="row mb-2 justify-content-center">
+                        <div class="col-12 col-md-6 text-center">
+                            <h1 class="h3 mb-3">Subir imagen del producto</h1>
                         </div>
                     </div>
 
 
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">En esta tabla se encuentra el material</h5>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6">
+                          
+                               
+                                
+                        <form class="dropzone" class="dropzone" action="servidor/inventario/subir-imagen.php" id="my-great-dropzone">
+                            <div class="dz-message">
+                                <div class="icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 col-md-12">
-                                            <table id="example" class="table table-hover nowrap" style="width:100%">
-                                            <!-- <thead>
-                                                <tr>
-                                                    <th>Subscriber ID</th>
-                                                    <th>Install Location</th>
-                                                    <th>Subscriber Name</th>
-                                                    <th>some data</th>
-                                                </tr>
-                                            </thead> -->
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                            <h2>Suelta tus archivos aquí</h2>
+                            <span class="note">No hay archivos seleccionados</span>
                             </div>
+                        </form>
+                           
                         </div>
                     </div>
 
@@ -118,13 +135,18 @@ session_start();
     <script src="js/app.js"></script>
 
     <!-- Librerias -->
+
+     -->
     <script src="https://kit.fontawesome.com/31a28ea63e.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
     <!-- Mis scripts -->
-    <script src="js/inventario/traer-inventario.js"></script>
+    <script src="js/inventario/subir-img-producto.js"></script>
     <!-- <script src="js/clientes/traer-lista.js"></script>
     <script src="js/clientes/eliminar-cliente.js"></script>
  -->
