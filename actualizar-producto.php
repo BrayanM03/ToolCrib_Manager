@@ -20,7 +20,7 @@ session_start();
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-    <title>Subir imagen | Toolcrib manager</title>
+    <title>Inventario clima | AireEx manager</title>
 
     <link href="css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" />
@@ -28,33 +28,12 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" />
-<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
-  <style>
 
-    .dropzone{
-        border: 2px dashed #c3c3c3;
-        padding: 40px;
-       
-    }
-
-    .icon i{
-        font-size: 3em;
-        text-align: center;
-        color: #696767;
-        background-color: #dfdddd;
-        height: 100px;
-        width: 100px;
-        margin-bottom: 20px;
-        border-radius: 50%;
-        padding: 25px 20px; 
-    }
-
-    .note{
-        color: #40405b;
-    }
-    
-  </style>
+    <!-- Librerias del plugin input file bootstrap -->
+    <!-- <link href="vendor/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="vendor/bootstrap-fileinput-master/themes/explorer-fa5/theme.css" media="all" rel="stylesheet" type="text/css"/>
+    -->
 </head>
 
 <body>
@@ -72,32 +51,18 @@ session_start();
                 <div class="container-fluid p-0">
 
                     <div class="row mb-2 justify-content-center">
-                        <div class="col-12 col-md-6 text-center">
-                            <h1 class="h3 mb-3">Subir imagen del <span id="name_p" name="">producto<span></h1>
+                        <div class="col-12 col-md-6">
+                            <h1 class="h3 mb-3">Actualizar material/herramienta al inventario</h1>
                         </div>
                     </div>
 
 
 
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-md-6">
-                          
-                               
+                    <div class="row">
+                        <div class="col-12">
                                 
-                        <form class="dropzone" class="dropzone" action="servidor/inventario/subir-imagen.php?product_id=<?php echo $_GET["id"]?>" id="my-great-dropzone">
-                            <div class="dz-message">
-                                <div class="icon">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                </div>
-                                
-                            <h2>Suelta tus archivos aquí</h2>
-                            <span class="note">No hay archivos seleccionados</span>
-                            </div>
-                            <div class="fallback">
-                            <input type="file" name="file">
-                        </div>
-                        </form>
-                        
+                                            <?php include 'vistas/inventario/actualizar-producto.php'?>
+                     
                            
                         </div>
                     </div>
@@ -140,17 +105,27 @@ session_start();
 
     <!-- Librerias -->
 
+   <!--  <script src="vendor/bootstrap-fileinput-master/js/plugins/buffer.min.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/plugins/filetype.min.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/plugins/piexif.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/fileinput.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/locales/fr.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/js/locales/es.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/themes/gly/theme.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/themes/fa5/theme.js" type="text/javascript"></script>
+    <script src="vendor/bootstrap-fileinput-master/themes/explorer-fa5/theme.js" type="text/javascript"></script>
+    <script>$.fn.fileinput.defaults.theme = 'gly';</script>
      -->
     <script src="https://kit.fontawesome.com/31a28ea63e.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
     <!-- Mis scripts -->
-    <script src="js/inventario/subir-img-producto.js"></script>
+    <script src="js/inventario/editar-producto.js"></script>
     <!-- <script src="js/clientes/traer-lista.js"></script>
     <script src="js/clientes/eliminar-cliente.js"></script>
  -->

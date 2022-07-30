@@ -16,13 +16,13 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="nueva-orden.php">
+                <a class="sidebar-link" href="nueva-salida.php">
                     <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Nueva salida</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
+                <a class="sidebar-link" href="nueva-entrada.php">
                     <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Nueva entrada</span>
                 </a>
             </li>
@@ -78,7 +78,7 @@
                                 <div class="accordion-body">
                                     <li class="sidebar-item">
                                         <a class="sidebar-link" href="index.php?store_id=<?php echo $row['id'] ?>&name=<?php echo $row['nombre'] ?>">
-                                            <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Aires</span>
+                                            <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Inventario</span>
                                         </a>
                                     </li>
                                    

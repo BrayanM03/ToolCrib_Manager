@@ -1,103 +1,4 @@
-
-$(document).ready(function () {
-
-    let sucursal_id = getParameterByName("store_id")
-    tabla = $('#example').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax:{
-            url: 'servidor/inventario/server_processing.php?sucursal_id=' + sucursal_id,
-            dataType: 'json'
-        },
-        responsive: true,
-        order: [0, 'desc'],
-        columns:  [
-            { data:0, title:'#' },
-            { data:2, title:'Codigo' },
-            { data:11, title:'Descripcion' },
-            { data:null, title:'Stock', render:function(data,row){ 
-             
-              if(data[4] == 0){
-                return `${data[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-danger"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
-              }else{
-                return data[4]
-              }
-             }},
-            { data:3, title:'Costo' },
-            { data:1, title:'Proveedor' },
-            { data:7, title:'Estatus' },
-            { data:5, title:'Minimo' },
-            { data:6, title:'Maximo' },
-            { data:9, title:'Locación' },
-            { data:10, title:'Categoria' },
-            { data: null, title:'Imagen', render:function(data,row){
-              return `<img src="./img/productos/${data[14]}.jpg" width="50" height="50">`
-            }},
-            { data:null, title:'Opciones', render: function(row){
-                return `
-                <div class='row'>
-                    <div class='col-12 col-md-12'>
-                        <div class="btn btn-primary" onclick="configurationPanel(${row[0]})"><i class="fa-solid fa-pen-to-square"></i></div>
-                        <div class="btn btn-danger" onclick="eliminarProducto(${row[0]})"><i class="fa-solid fa-trash"></i></div>
-                    </div>
-                </div>
-                `
-            }}
-        ],
-        
-            language: language_options,
-    
-
-        
-        
-    });
-});
-
-function editarProducto(id){
-  let sucursal_id = getParameterByName("store_id")
-  let store_name = getParameterByName("name")
-    window.location.href = "actualizar-producto.php?id_product="+ id +"&store_id=" + sucursal_id + "&name="+ store_name;
-
-}
-
-function eliminarProducto(id_product){
-  Swal.fire({
-    icon: "question",
-    html: "<b>¿Seguro de eliminar este producto?</b>"+
-    "<p>Se eliminaran las series de este modelo</p>",
-    confirmButtonText: "Si",
-    showCancelButton: true,
-    cancelButtonText: "Mejor no"
-  }).then((response) => {
-    if(response.isConfirmed) {
-  
-      let dato = {
-        producto: id_product,
-        type: "eliminacion",
-    };
-
-      $.ajax({
-        type: "POST",
-        url: "../servidor/inventario/manejo-productos.php",
-        data: dato,
-        dataType: "JSON",
-        success: function (response) {
-        
-       tabla.ajax.reload( null, false)
-
-        Toast.fire({
-          icon: 'success',
-          title: response.mensj
-        })
-          
-        }
-    });
-
-    }
-  }) 
-}
-
-
+sucursal_id = $("user-data").attr("id_sucursal");
 let language_options = {
     "processing": "Procesando...",
     "lengthMenu": "Mostrar _MENU_ registros",
@@ -341,22 +242,45 @@ let language_options = {
     }
   }
 
+tabla = $('#example').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax:{
+        url: 'servidor/salidas/server_processing_presalida.php?sucursal_id=' + sucursal_id,
+        dataType: 'json'
+    },
+    responsive: true,
+    order: [0, 'desc'],
+    columns:  [
+        { data:0, title:'#' },
+        { data:1, title:'Codigo' },
+        { data:1, title:'Concepto' },
+        { data:2, title:'Cantidad' },
+        { data: null, title:'Imagen', render:function(data,row){
+          return `<img src="./img/productos/${data[1]}.jpg" width="50" height="50">`
+        }},
+        { data:null, title:'Opciones', render: function(row){
+            return `
+            <div class='row'>
+                <div class='col-12 col-md-12'>
+                    
+                    <div class="btn btn-danger" onclick="eliminarItem(${row[0]})"><i class="fa-solid fa-trash"></i></div>
+                </div>
+            </div>
+            `
+        }}
+    ],
+    
+        language: language_options,
 
-  function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-  }
 
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'bottom-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+    
+    
+});
+
+
+
+
+
+
+

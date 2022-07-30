@@ -125,6 +125,7 @@ session_start();
 
     <!-- Mis scripts -->
     <script src="js/inventario/traer-inventario.js"></script>
+    <script src="js/inventario/opciones.js"></script>
     <!-- <script src="js/clientes/traer-lista.js"></script>
     <script src="js/clientes/eliminar-cliente.js"></script>
  -->

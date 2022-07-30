@@ -225,7 +225,17 @@ function agregarProducto() {
 
                     if(result.isConfirmed){
 
-                        window.location.href = "subir-imagen-producto.php?id=";
+                      $.ajax({
+                        type: "POST",
+                        url: "./servidor/inventario/traer-producto.php",
+                        data: {id: response2.id_nuevo},
+                        dataType: "JSON",
+                        success: function (response) {
+                         window.location.href = "subir-imagen-producto.php?id="+response.data.id;
+                        }
+                      });
+
+                       
 
                     }else if(result.isCancelled){
                         window.location.reload

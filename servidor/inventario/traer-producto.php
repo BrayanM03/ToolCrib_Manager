@@ -3,18 +3,18 @@ if ($_POST) {
     include "../database/conexion.php";
     date_default_timezone_set('America/Matamoros');
 
-    $id_refaccion = $_POST["id"];
+    $id_prod= $_POST["id"];
 
-    $select = "SELECT COUNT(*) FROM refacciones WHERE id = ?";
+    $select = "SELECT COUNT(*) FROM inventario WHERE id = ?";
     $resp = $con->prepare($select);
-    $resp->execute([$id_refaccion]);
+    $resp->execute([$id_prod]);
     $total = $resp->fetchColumn();
 
     if($total > 0){
 
-        $consultar = "SELECT * FROM refacciones WHERE id = ?";
+        $consultar = "SELECT * FROM inventario WHERE id = ?";
         $resp = $con->prepare($consultar);
-        $resp->execute([$id_refaccion]);
+        $resp->execute([$id_prod]);
         while ($row = $resp->fetch()) {
             $data = $row;
         }

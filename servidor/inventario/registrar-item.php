@@ -34,13 +34,14 @@ if ($_POST) {
                                        categoria,
                                        descripcion,
                                        fecha,
-                                       hora.
+                                       hora,
                                        img)VALUES(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $resp = $con->prepare($insert);
     $resp->execute([$proveedor, $codigo, $costo, $cantidad, $stock_minimo, $stock_maximo, $estatus, $sucursal, $locacion, $categoria, $descripcion, $fecha, $hora, $imagen]);
     $resp->closeCursor();
+    $last_id = $con->lastInsertId();
 
-    $response = array("status"=>true, "mensj"=>"El registro se insertó correctamente");
+    $response = array("status"=>true, "mensj"=>"El registro se insertó correctamente", "id_nuevo"=> $last_id);
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
 
