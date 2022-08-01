@@ -27,11 +27,27 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="historial.php">
-                    <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Historial</span>
-                </a>
-            </li>
+            <li class="sidebar-item accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseHistory" aria-expanded="true" aria-controls="collapseHistory">
+                        <a class="sidebar-link" href="#">
+                            <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Historial</span>
+                        </a>
+                    </li>
+
+            <div id="collapseHistory" class="accordion-collapse collapse" style="margin-left:13px;" aria-labelledby="headingHistory" data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="historial-entradas.php">
+                                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Entradas</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="historial-salidas.php">
+                                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Salidas</span>
+                                </a>
+                            </li>
+                            
+                        </div>
+                    </div>
 
             <!-- <li class="sidebar-item">
                 <a class="sidebar-link" href="pages-blank.html">

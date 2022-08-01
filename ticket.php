@@ -26,7 +26,19 @@ date_default_timezone_set('America/Matamoros');
 
     </div>
 
-    <div class="row aling-items-start">
+
+    <?php
+               
+                $select = "SELECT * FROM salidas WHERE id = ?";
+                $re = $con->prepare($select);
+                $re->execute([$_GET['id']]);
+
+                $ind = 1;
+                while($row = $re->fetch(PDO::FETCH_OBJ)){
+                    
+                    echo   '
+                    
+                    <div class="row aling-items-start">
 
     <div class="col-12 col-md-3">
     <img src="img/logo.jpg" alt="Charles Hall" class="img-fluid" style="width: 130px; padding-left:17px;" width="100" height="100" />
@@ -36,12 +48,12 @@ date_default_timezone_set('America/Matamoros');
         <div class="row mt-5 mb-4">
             <div class="col-12 col-md-8 text-start">
                 <h5 class="card-title mb-0" id="title-card">Nombre empleado: </h5>
-                <label for="">Brayan Maldonado Morgado</label>
+                <label for="">'. $row->nombre .'</label>
             </div>
 
             <div class="col-12 col-md-4 text-start">
                 <h5 class="card-title mb-0" id="title-card">Numero de empleado: </h5>
-                <label for="">15260650</label>
+                <label for="">'. $row->no_empleado .'</label>
             </div>
         </div>
     </div>
@@ -56,22 +68,33 @@ date_default_timezone_set('America/Matamoros');
     <div class="row  mb-5 justify-content-end">
         <div class="col-12 col-md-2 text-start">
             <h5 class="card-title mb-0" id="title-card">Area: </h5>
-            <label for="">Materiales</label>
+            <label for="">'. $row->area .'</label>
         </div>
         <div class="col-12 col-md-2 text-start">
             <h5 class="card-title mb-0" id="title-card">Fecha: </h5>
-            <label for="">2022-08-01</label>
+            <label for="">'. $row->fecha .'</label>
         </div>
         <div class="col-12 col-md-2 text-start">
             <h5 class="card-title mb-0" id="title-card">Hora: </h5>
-            <label for="">16:05</label>
+            <label for="">'. $row->hora .'</label>
         </div>
 
         <div class="col-12 col-md-3 text-center">
             <h5 class="card-title mb-0" id="title-card">Usuario que registró: </h5>
-            <label for="">Antonio Sasori Hernandez</label>
+            <label for="">'. $row->usuario_nombre .'</label>
         </div>
     </div>
+                    
+                    ';
+                    $ind++;
+
+                }
+
+                        ?>
+
+
+
+    
 
     <div class="row mb-4 justify-content-center">
 
