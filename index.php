@@ -30,6 +30,13 @@ session_start();
 
 </head>
 
+<style>
+    .redClass {
+        background-color: tomato !important;
+        color: white;
+    }
+</style>
+
 <body>
     <div class="wrapper">
 

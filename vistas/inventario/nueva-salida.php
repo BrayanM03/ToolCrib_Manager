@@ -160,6 +160,9 @@
                 
 
                 <div class="row mb-3 justify-content-center">
+                <div class="col-12 col-md-4 text-center">
+                        <div class="btn btn-warning" onclick="restearTabla(<?php echo $_SESSION['id'] ?>)">Resetar tabla</div>
+                    </div>
                     <div class="col-12 col-md-4 text-center">
                         <div class="btn btn-success" onclick="registarSalida()">Registrar salida</div>
                     </div>

@@ -15,12 +15,16 @@ $(document).ready(function () {
             { data:0, title:'#' },
             { data:2, title:'Codigo' },
             { data:11, title:'Descripcion' },
-            { data:null, title:'Stock', render:function(data,row){ 
+            { data:null, title:'Stock', render:function(row, data, dataIndex){ 
              
-              if(data[4] == 0){
-                return `${data[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-danger"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
+              if( parseInt(row[4]) == 0){
+                return `${row[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-danger"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
+              }else if( parseInt(row[4]) ==  parseInt(row[5])){
+                return `${row[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-warning"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
+              }else if( parseInt(row[4]) >=  parseInt(row[6])){
+                return `${row[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-warning"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
               }else{
-                return data[4]
+                return row[4]
               }
              }},
             { data:3, title:'Costo' },
@@ -44,6 +48,15 @@ $(document).ready(function () {
                 `
             }}
         ],
+        "createdRow": function( row, data, dataIndex){
+          if(  parseInt(data[4]) <=   parseInt(data[5])){
+              $(row).addClass('table-danger');
+          }else if( parseInt(data[4]) >= parseInt(data[6])){
+              $(row).addClass('table-success');
+          }else if(  parseInt(data[4]) == 0){
+              $(row).addClass('.redClass');
+          }
+      },
         
             language: language_options,
     

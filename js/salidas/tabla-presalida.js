@@ -1,4 +1,8 @@
-sucursal_id = $("user-data").attr("id_sucursal");
+sucursal_id = $("#user-data").attr("id_sucursal");
+user_id = $("#user-data").attr("id_user");
+console.log(user_id);
+restearTabla(user_id);
+
 let language_options = {
     "processing": "Procesando...",
     "lengthMenu": "Mostrar _MENU_ registros",
@@ -242,6 +246,8 @@ let language_options = {
     }
   }
 
+
+
 tabla = $('#example').DataTable({
     processing: true,
     serverSide: true,
@@ -254,8 +260,8 @@ tabla = $('#example').DataTable({
     columns:  [
         { data:0, title:'#' },
         { data:1, title:'Codigo' },
-        { data:1, title:'Concepto' },
-        { data:2, title:'Cantidad' },
+        { data:2, title:'Concepto' },
+        { data:4, title:'Cantidad' },
         { data: null, title:'Imagen', render:function(data,row){
           return `<img src="./img/productos/${data[1]}.jpg" width="50" height="50">`
         }},
@@ -278,6 +284,19 @@ tabla = $('#example').DataTable({
     
 });
 
+function eliminarItem(id){
+  $.ajax({
+    type: "POST",
+    url: "servidor/salidas/eliminar-presalida.php",
+    data: {id:id},
+    dataType: "JSON",
+    success: function (response2) { 
+        if(response2.status == true){
+          tabla.ajax.reload(null, false);
+        }
+    }
+});
+}
 
 
 

@@ -58,7 +58,7 @@ $columns = array(
 $sql_details = array(
 	'user' => 'root',
 	'pass' => '',
-	'db'   => 'toolcrip_manager',
+	'db'   => 'toolcrib_manager',
 	'host' => 'localhost'
 );
 

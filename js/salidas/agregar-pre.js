@@ -24,12 +24,20 @@ function agregarPreSalida(){
             "cantidad": cantidad
         }
 
+
         $.ajax({
             type: "POST",
             url: "servidor/salidas/agregar-pre.php",
             data: data,
             dataType: "JSON",
             success: function (response) {
+                if(response.status == true){
+                    toastr.success(response.mensj, 'Error')
+
+                }else{
+                    toastr.error(response.mensj, 'Error')
+
+                }
                 tabla.ajax.reload(null, false);
                 $("#stock-data").text(response.cantidad_restante);
             }
@@ -57,3 +65,22 @@ toastr.options = {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut" 
   }
+
+
+
+function restearTabla(id){
+    $.ajax({
+        type: "POST",
+        url: "servidor/salidas/reset-presalida.php",
+        data: {id:id},
+        dataType: "JSON",
+        success: function (response2) { 
+            if(response2.status == true){
+              tabla.ajax.reload(null, false);
+    
+               
+            }
+        }
+    });
+    
+}  
