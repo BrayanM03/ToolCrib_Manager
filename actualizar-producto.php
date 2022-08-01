@@ -126,6 +126,7 @@ session_start();
 
     <!-- Mis scripts -->
     <script src="js/inventario/editar-producto.js"></script>
+    <script src="js/inventario/regresar-atras.js"></script>
     <!-- <script src="js/clientes/traer-lista.js"></script>
     <script src="js/clientes/eliminar-cliente.js"></script>
  -->

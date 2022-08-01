@@ -4,7 +4,7 @@
             <div class="card-header text-center">
                 <div class="row">
                     <div class="col-12 col-md-1" id="backbtn_area">
-                        <div class="btn" onclick="RegresarAtras(1)">
+                        <div class="btn" onclick="RegresarAtras()">
                             <i class="fa-solid fa-circle-left fa-2xl icono" style="color:#E5BE01"></i>
                         </div>
 

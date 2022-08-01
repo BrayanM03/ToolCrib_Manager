@@ -28,7 +28,7 @@ function iniciarSesion(){
                 animarError('pass', 2);
                 $("#btn-login").empty().html("Entrar")
             }else if(response == 1){
-                window.location.href = 'index.php'
+                window.location.href = 'panel.php'
             }
         }
     });

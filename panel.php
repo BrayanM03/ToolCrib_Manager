@@ -52,18 +52,41 @@ session_start();
 
                     <div class="row mb-2 justify-content-center">
                         <div class="col-12 col-md-6">
-                            <h1 class="h3 mb-3">Registrar nuevo material/herramienta al inventario</h1>
+                            <h1 class="h3 mb-3">Bienvenido <?php echo $_SESSION['nombre']?></h1>
                         </div>
                     </div>
 
+                    
 
 
-                    <div class="row">
-                        <div class="col-12">
+
+                    <div class="row justify-content-center">
+                        <div class="col-12  col-md-6">
                           
                                
-                                
-                                            <?php include 'vistas/inventario/registrar-nuevo.php'?>
+                                <div class="card p-5">
+                                    <div class="row mb-3 justify-content-center">
+                                        <div class="col-12 col-md-12 text-center">
+                                            <label for="">Total de productos en inventario</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2 justify-content-center">
+                                        <div class="col-12 col-md-6 text-center">
+                                            <span style="color:tomato; font-size:30px">
+                                            <?php 
+                                                include "servidor/database/conexion.php";
+                                                $sql = "SELECT COUNT(*) FROM inventario";
+                                                $result = $con->prepare($sql);
+                                                $result->execute();
+                                                $total = $result->fetchColumn();
+                                                echo $total;
+                                            ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
                                       
                               
                            
@@ -129,7 +152,6 @@ session_start();
 
     <!-- Mis scripts -->
     <script src="js/inventario/agregar-item.js"></script>
-    <script src="js/inventario/regresar-atras.js"></script>
     <!-- <script src="js/clientes/traer-lista.js"></script>
     <script src="js/clientes/eliminar-cliente.js"></script>
  -->
