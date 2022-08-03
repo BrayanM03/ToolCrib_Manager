@@ -46,6 +46,7 @@ $columns = array(
 	array( 'db' => 'fecha',   'dt' => 12 ),
 	array( 'db' => 'hora',   'dt' => 13 ),
 	array( 'db' => 'img',   'dt' => 14 ),
+	array( 'db' => 'timestamp',   'dt' => 15 ),
 /* 	array(
 		'db'        => 'start_date',
 		'dt'        => 4,

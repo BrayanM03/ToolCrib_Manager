@@ -22,9 +22,10 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
     addRemoveLinks: true,
     renameFile: function (file) {
 
+      let timestamp = getTimestampInSeconds();
       newName = $("#name_p").attr("name");
       console.log(newName);
-       return newName + ".jpg";
+       return newName +".jpg";// "?t="+ timestamp +
     }
   };
 
@@ -39,5 +40,9 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
     results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
+  function getTimestampInSeconds () {
+    return Math.floor(Date.now() / 1000)
   }
 

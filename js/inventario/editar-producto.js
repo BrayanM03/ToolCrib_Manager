@@ -229,13 +229,16 @@
 
                     Swal.fire({
                         icon:"success",
-                        html: `<b>${response2.mensj}</b>`
+                        html: `<b>${response2.mensj}</b><br>
+                        La pagina se recargara`
                     })
 
-                    window.location.reload()
+                    setTimeout(ReldPage, 1800)
     
                    
                 }}})
+
+                function ReldPage(){window.location.reload()}
     
     }
     

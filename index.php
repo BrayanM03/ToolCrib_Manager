@@ -14,7 +14,9 @@ session_start();
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
     <meta name="author" content="AdminKit">
     <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
@@ -52,11 +54,14 @@ session_start();
                 <div class="container-fluid p-0">
 
                     <div class="row mb-2">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-8">
                             <h1 class="h3 mb-3">Inventario Toolcrib</h1>
                         </div>
-                        <div class="col-12 col-md-6 text-end">
-                            <a href="agregar-item.php"><div class="btn btn-success">Registrar nuevo</div></a>
+                        <div class="col-12 col-md-2 text-end">
+                            <a href="servidor/inventario/reporte.php" target="_blank"><div class="btn btn-success">Reporte excel <i class="align-middle" data-feather="download-cloud"></i></div></a>
+                        </div>
+                        <div class="col-12 col-md-2 text-end">
+                            <a href="agregar-item.php"><div class="btn btn-primary">Registrar nuevo <i class="align-middle" data-feather="plus-circle"></i></div></a>
                         </div>
                     </div>
 

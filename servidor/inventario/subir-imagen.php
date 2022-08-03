@@ -10,6 +10,14 @@
 
         if(move_uploaded_file($_FILES['file']['tmp_name'], $folderFileCopy)){
 
+            $fecha = new DateTime();
+            $timestamp = $fecha->getTimestamp();
+
+            $updt = "UPDATE inventario SET timestamp = ? WHERE id = ?";
+            $res = $con->prepare($updt);
+            $res->execute([$timestamp, $producto_id]);
+            $res->closeCursor();
+
             $code = $_FILES['file']['name'];
             $codigo_sin_jpg = substr($code, 0, -4);
             $update_img = "UPDATE inventario SET img = ? WHERE codigo= ?";

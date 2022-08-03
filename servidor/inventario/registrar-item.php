@@ -2,7 +2,8 @@
 if ($_POST) {
     include "../database/conexion.php";
     date_default_timezone_set('America/Matamoros');
-
+    $fecha_t = new DateTime();
+    $timestamp = $fecha_t->getTimestamp();
 
 
     $proveedor = $_POST['proveedor'];
@@ -35,9 +36,10 @@ if ($_POST) {
                                        descripcion,
                                        fecha,
                                        hora,
-                                       img)VALUES(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                       img,
+                                       timestamp)VALUES(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $resp = $con->prepare($insert);
-    $resp->execute([$proveedor, $codigo, $costo, $cantidad, $stock_minimo, $stock_maximo, $estatus, $sucursal, $locacion, $categoria, $descripcion, $fecha, $hora, $imagen]);
+    $resp->execute([$proveedor, $codigo, $costo, $cantidad, $stock_minimo, $stock_maximo, $estatus, $sucursal, $locacion, $categoria, $descripcion, $fecha, $hora, $imagen, $timestamp]);
     $resp->closeCursor();
     $last_id = $con->lastInsertId();
 

@@ -35,7 +35,7 @@ $(document).ready(function () {
             { data:9, title:'Locación' },
             { data:10, title:'Categoria' },
             { data: null, title:'Imagen', render:function(data,row){
-              return `<img src="./img/productos/${data[14]}.jpg" width="50" height="50">`
+              return `<img src="./img/productos/${data[14]}.jpg?t=${data[15]}" width="50" height="50">`
             }},
             { data:null, title:'Opciones', render: function(row){
                 return `
@@ -96,12 +96,13 @@ function eliminarProducto(id_product){
         dataType: "JSON",
         success: function (response) {
         
-       tabla.ajax.reload( null, false)
+       
 
         Toast.fire({
           icon: 'success',
           title: response.mensj
         })
+        tabla.ajax.reload( null, false);
           
         }
     });

@@ -36,6 +36,9 @@ if ($_POST) {
        
     }
     
+    $fecha_t = new DateTime();
+    $timestamp = $fecha_t->getTimestamp();
+
 
     $insert = "UPDATE inventario SET proveedor = ?,
                                        codigo = ?,
@@ -48,9 +51,10 @@ if ($_POST) {
                                        locacion =?,
                                        categoria=?,
                                        descripcion=?,
-                                       img=? WHERE id= ?";
+                                       img=?,
+                                       timestamp =? WHERE id= ?";
     $resp = $con->prepare($insert);
-    $resp->execute([$proveedor, $codigo, $costo, $cantidad, $stock_minimo, $stock_maximo, $estatus, $sucursal, $locacion, $categoria, $descripcion, $cod_img, $id]);
+    $resp->execute([$proveedor, $codigo, $costo, $cantidad, $stock_minimo, $stock_maximo, $estatus, $sucursal, $locacion, $categoria, $descripcion, $cod_img, $timestamp, $id]);
     $resp->closeCursor();
 
     
