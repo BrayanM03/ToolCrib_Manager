@@ -42,8 +42,8 @@ $fecha = date("Y-m-d");
 
             //$categoria = 'computadorascat';
 
-            $arreglo = traerDetalles($con, $fecha_inicio, $fecha_final, $sucursal);
-            echo json_encode($arreglo, JSON_UNESCAPED_UNICODE);
+            $arreglo = traerDetalles($con, $fecha_inicio, $fecha_final);
+           //echo json_encode($arreglo, JSON_UNESCAPED_UNICODE);
           
             $total_ingresos_efectivo = 0;
             
@@ -96,7 +96,6 @@ $fecha = date("Y-m-d");
             $hoja_activa->setCellValue('C3', 'Descripcion');
             $hoja_activa->getColumnDimension('D')->setWidth(10);
             $hoja_activa->setCellValue('D3', 'Ticket');
-         //   $columnFilter = $autofilter->getColumn('D');
             $hoja_activa->getColumnDimension('E')->setWidth(10);
             $hoja_activa->setCellValue('E3', 'Cantidad requerida');
             $hoja_activa->getColumnDimension('F')->setWidth(17);
@@ -111,13 +110,11 @@ $fecha = date("Y-m-d");
             $hoja_activa->setCellValue('J3', 'Fecha');
             $hoja_activa->getColumnDimension('K')->setWidth(20);
             $hoja_activa->setCellValue('K3', 'Hora');
-            $hoja_activa->getColumnDimension('L')->setWidth(28);
-            $hoja_activa->setCellValue('L3', 'Proveedor');
-            $hoja_activa->getColumnDimension('M')->setWidth(20);
-            $hoja_activa->setCellValue('M3', 'Empleado que solicita');
-            $hoja_activa->getStyle('A3:M3')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setRGB('007bcc');
-            $hoja_activa->getStyle('A3:M3')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-            $hoja_activa->getStyle('A3:M3')->getFont()->setBold(true);
+            $hoja_activa->getColumnDimension('L')->setWidth(20);
+            $hoja_activa->setCellValue('L3', 'Empleado que solicita');
+            $hoja_activa->getStyle('A3:L3')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setRGB('007bcc');
+            $hoja_activa->getStyle('A3:L3')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+            $hoja_activa->getStyle('A3:L3')->getFont()->setBold(true);
             $hoja_activa->getRowDimension('3')->setRowHeight(20);
 
             
@@ -125,16 +122,17 @@ $fecha = date("Y-m-d");
             if($cantidad_resultado == 0){
                 
                 $hoja_activa->getRowDimension('4')->setRowHeight(28);
-                $hoja_activa->getStyle('A4:M4')->getAlignment()->setHorizontal('center');
-                $hoja_activa->getStyle('A4:M4')->getAlignment()->setVertical('center');
-                $hoja_activa->mergeCells("A4:M4");
-                $hoja_activa->setCellValue('A4', 'Sin datos de los ingresos');
+                $hoja_activa->getStyle('A4:L4')->getAlignment()->setHorizontal('center');
+                $hoja_activa->getStyle('A4:L4')->getAlignment()->setVertical('center');
+                $hoja_activa->mergeCells("A4:L4");
+                $hoja_activa->setCellValue('A4', 'Sin datos de salida');
             }else{
                 $i = 4;
+                $co = 1;
                 while ($row = array_shift($arreglo)) {
-                    $hoja_activa->setCellValue('A'.$i, $i-3);
+                    $hoja_activa->setCellValue('A'.$i, $co);
                     $hoja_activa->setCellValue('B'.$i, $row['codigo']);
-                    $hoja_activa->setCellValue('C'.$i, $row['descripcion']);
+                    $hoja_activa->setCellValue('C'.$i, $row['concepto']);
                     $hoja_activa->setCellValue('D'.$i, $row['nombre']);
                     $hoja_activa->setCellValue('E'.$i, $row['cantidad']);
                     $hoja_activa->setCellValue('F'.$i, $row['costo']);
@@ -143,8 +141,7 @@ $fecha = date("Y-m-d");
                     $hoja_activa->setCellValue('I'.$i, $row['categoria']);
                     $hoja_activa->setCellValue('J'.$i, $row['fecha']);
                     $hoja_activa->setCellValue('K'.$i, $row['hora']);
-                    $hoja_activa->setCellValue('L'.$i, $row['estatus']);
-                    $hoja_activa->setCellValue('M'.$i, $row['no_empleado']);
+                    $hoja_activa->setCellValue('L'.$i, $row['no_empleado']);
                     $i++;
                 }
 
@@ -160,9 +157,9 @@ $fecha = date("Y-m-d");
       
         
 
-        /* header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="Reporte de '.$fecha .'.xlsx"');
-        header('Cache-Control: max-age=0'); */
+        header('Cache-Control: max-age=0');
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         

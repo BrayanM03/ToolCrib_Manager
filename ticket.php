@@ -21,7 +21,7 @@ date_default_timezone_set('America/Matamoros');
 
     <div class="row mb-2">
         <div class="col-12 col-md-12 text-end">
-            <h5 class="card-title mb-0" id="title-card">Ticket de salida #<?php echo $_GET['id'] ?></h5>
+            <h5 class="card-title mb-0" id="title-card">Ticket de salida #<?php echo $_GET['ticket'] ?></h5>
         </div>
 
     </div>
@@ -46,12 +46,9 @@ date_default_timezone_set('America/Matamoros');
 
     <div class="col-12 col-md-9">
         <div class="row mt-5 mb-4">
-            <div class="col-12 col-md-8 text-start">
-                <h5 class="card-title mb-0" id="title-card">Nombre empleado: </h5>
-                <label for="">'. $row->nombre .'</label>
-            </div>
+            
 
-            <div class="col-12 col-md-4 text-start">
+            <div class="col-12 col-md-6 text-start">
                 <h5 class="card-title mb-0" id="title-card">Numero de empleado: </h5>
                 <label for="">'. $row->no_empleado .'</label>
             </div>

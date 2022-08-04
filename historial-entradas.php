@@ -53,7 +53,7 @@ session_start();
 
                     <div class="row mb-2">
                         <div class="col-12 col-md-6">
-                            <h1 class="h3 mb-3">Historial de salidas</h1>
+                            <h1 class="h3 mb-3">Historial de entradas</h1>
                         </div>
                         <!-- <div class="col-12 col-md-6 text-end">
                             <a href="agregar-item.php"><div class="btn btn-success">Registrar nuevo</div></a>

@@ -1,6 +1,6 @@
-function verTicket(id) {
+function verTicket(id, ticket) {
     
-    window.open("ticket.php?id="+id, '_blank', 'location=yes,height=570,width=1000,scrollbars=yes,status=yes');
+    window.open("ticket.php?id="+id + "&ticket=" + ticket, '_blank', 'location=yes,height=570,width=1000,scrollbars=yes,status=yes');
 }
 
 function eliminarRegistro(id){
@@ -57,6 +57,25 @@ function optionsReporteSalidas(){
                         </div>
                     </div>
                </div>`,
+               preConfirm: () => {
+
+               
+                   
+                        if($("#fechaInicio").val() == "" || $("#fechaFin").val() == ""){
+                            
+                            Swal.showValidationMessage(
+                                `Debes ingresar las fechas`
+                              )
+                        }else if($("#fechaFin").val() < $("#fechaInicio").val() ){
+                            Swal.showValidationMessage(
+                                `La fecha fin no puede ser menor a la inicial`
+                              )
+                        }
+                   
+            
+            },
+
+            
 
         confirmButtonText: "Generar",
         showCancelButton: true,
@@ -65,7 +84,7 @@ function optionsReporteSalidas(){
         if(result.isConfirmed){
             let inicio = $("#fechaInicio").val();  //fecha inicio
             let fin = $("#fechaFin").val();  //fecha fin
-            window.open('servidor/salidas/reporte-salidas.php?inicio='+inicio+'&fin='+fin, '_blank', 'location=yes,scrollbars=yes,status=yes');
+            window.open('servidor/salidas/reporte-salidas.php?inicio='+inicio+'&fin='+fin, '_blank');
         }
     })
 
