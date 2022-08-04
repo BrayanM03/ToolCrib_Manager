@@ -18,7 +18,7 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
     paramName: "file", // The name that will be used to transfer the file
     maxFilesize: .5, // MB
     maxFiles: 1,
-    acceptedFiles: ".jpg",
+    acceptedFiles: ".jpg, .jpeg",
     addRemoveLinks: true,
     renameFile: function (file) {
 

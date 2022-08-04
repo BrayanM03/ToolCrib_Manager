@@ -30,6 +30,16 @@
                             </select>
 
                         </div>
+
+
+                        <div class="col-12 col-md-6">
+                        <label for="area">Area</label>
+                        <!-- <select name="proveedor" class="form-control" id="proveedor"></select> -->
+                        <input name="area" class="form-control" id="area" placeholder="Escribe una area">
+
+                    </div>
+
+
                 </div>
 
                 <div class="row mb-3">

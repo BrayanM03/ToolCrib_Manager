@@ -20,7 +20,7 @@ session_start();
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-    <title>Inventario clima | AireEx manager</title>
+    <title>Historial salidas | AireEx manager</title>
 
     <link href="css/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -58,6 +58,7 @@ session_start();
                         <!-- <div class="col-12 col-md-6 text-end">
                             <a href="agregar-item.php"><div class="btn btn-success">Registrar nuevo</div></a>
                         </div> -->
+                        
                     </div>
 
 
@@ -66,8 +67,16 @@ session_start();
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
+                                    <div class="row">
+                                    <div class="col-12 col-md-10 text-start">
                                     <h5 class="card-title mb-0">En esta tabla se encuentra el registro de salida de material</h5>
+                                    </div>
+                                    <div class="col-12 col-md-2 text-end">
+                                        <a href="#"><div class="btn btn-success" onclick="optionsReporteSalidas()">Reporte excel <i class="align-middle" data-feather="download-cloud"></i></div></a>
+                                    </div>
+                                    </div>
                                 </div>
+
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12 col-md-12">

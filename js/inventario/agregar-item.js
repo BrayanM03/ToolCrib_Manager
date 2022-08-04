@@ -153,6 +153,7 @@ toastr.options = {
 function agregarProducto() { 
 
 
+    let area = $("#area").val();
     let proveedor = $("#proveedor").val();
     let codigo = $("#codigo").val();
     codigo = codigo.replace(/ /g, "")
@@ -202,7 +203,9 @@ function agregarProducto() {
         stock_maximo: stock_maximo,
         descripcion: descripcion,
         cantidad: cantidad,
-        sucursal: sucursal
+        sucursal: sucursal,
+        area: area
+
     } 
 
     $.ajax({

@@ -21,6 +21,7 @@
             $("#categoria").val(resp.data.categoria);
             $("#descripcion").val(resp.data.descripcion);
             $("#label-codigo").attr("codigo", resp.data.codigo);
+            $("#area").val(resp.data.area);
 
             
     /* Swal.fire({
@@ -164,6 +165,7 @@
 
     function editarProducto(id){
 
+        let area = $("#area").val();
         let proveedor = $("#proveedor").val();
         let codigo = $("#codigo").val();
         codigo = codigo.replace(/ /g, "")
@@ -215,7 +217,8 @@
             stock_maximo: stock_maximo,
             descripcion: descripcion,
             cantidad: cantidad,
-            sucursal: sucursal
+            sucursal: sucursal,
+            area: area
         } 
     
 

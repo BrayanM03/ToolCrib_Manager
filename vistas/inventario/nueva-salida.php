@@ -35,8 +35,8 @@
                 <div class="row mb-3">
 
                     <div class="col-12 col-md-6">
-                        <label for="nombre"><b>Nombre completo:</b></label>
-                        <input type="text" placeholder="Nombre" id="nombre" name="nombre" class="form-control">
+                        <label for="nombre"><b>Numero de ticket:</b></label>
+                        <input type="text" placeholder="Ingresa el numero de ticket" id="nombre" name="nombre" class="form-control">
                     </div>
 
                     <div class="col-12 col-md-6">

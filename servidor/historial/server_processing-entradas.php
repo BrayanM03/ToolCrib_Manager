@@ -19,7 +19,7 @@
  */
 
 // DB table to use
-$table = 'inventario';
+$table = 'entradas';
 
 // Table's primary key
 $primaryKey = 'id';
@@ -32,21 +32,11 @@ $sucursal_id = $_GET['sucursal_id'];
 // indexes
 $columns = array(
 	array( 'db' => 'id', 'dt' => 0 ),
-	array( 'db' => 'proveedor',  'dt' => 1 ),
-	array( 'db' => 'codigo', 'dt' => 2 ),
-	array( 'db' => 'costo', 'dt' => 3 ),
-	array( 'db' => 'stock', 'dt' => 4 ),
-	array( 'db' => 'minimo', 'dt' => 5 ),
-	array( 'db' => 'maximo',  'dt' => 6 ),
-	array( 'db' => 'area',   'dt' => 7 ),
-	array( 'db' => 'sucursal',   'dt' => 8 ),
-	array( 'db' => 'locacion',   'dt' => 9 ),
-	array( 'db' => 'categoria',   'dt' => 10 ),
-	array( 'db' => 'descripcion',   'dt' => 11 ),
-	array( 'db' => 'fecha',   'dt' => 12 ),
-	array( 'db' => 'hora',   'dt' => 13 ),
-	array( 'db' => 'img',   'dt' => 14 ),
-	array( 'db' => 'timestamp',   'dt' => 15 ),
+	array( 'db' => 'fecha', 'dt' => 1 ),
+	array( 'db' => 'hora', 'dt' => 2 ),
+	array( 'db' => 'usuario_nombre',  'dt' => 3 ),
+	array( 'db' => 'usuario_id',   'dt' => 4 ),
+	array( 'db' => 'sucursal_id',   'dt' => 5 )
 /* 	array(
 		'db'        => 'start_date',
 		'dt'        => 4,
@@ -80,7 +70,7 @@ $sql_details = array(
 require( '../database/ssp.class.php' );
 
 echo json_encode(
-	SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, "sucursal = '$sucursal_id'")
+	SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, "sucursal_id = '$sucursal_id'")
 );
 
 

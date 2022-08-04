@@ -15,7 +15,7 @@ if ($_POST) {
     $categoria = $_POST['categoria'];
     $descripcion = $_POST['descripcion'];
     $sucursal = $_POST['sucursal'];
-    $estatus = "Activo";
+    $area=  $_POST['area'];
     /* $fecha = date('Y-m-d');
     $hora = date('H:i:s'); */
 
@@ -46,7 +46,7 @@ if ($_POST) {
                                        stock = ?,
                                        minimo = ?,
                                        maximo = ?,
-                                       estatus = ?,
+                                       area = ?,
                                        sucursal = ?,
                                        locacion =?,
                                        categoria=?,
@@ -54,7 +54,7 @@ if ($_POST) {
                                        img=?,
                                        timestamp =? WHERE id= ?";
     $resp = $con->prepare($insert);
-    $resp->execute([$proveedor, $codigo, $costo, $cantidad, $stock_minimo, $stock_maximo, $estatus, $sucursal, $locacion, $categoria, $descripcion, $cod_img, $timestamp, $id]);
+    $resp->execute([$proveedor, $codigo, $costo, $cantidad, $stock_minimo, $stock_maximo, $area, $sucursal, $locacion, $categoria, $descripcion, $cod_img, $timestamp, $id]);
     $resp->closeCursor();
 
     

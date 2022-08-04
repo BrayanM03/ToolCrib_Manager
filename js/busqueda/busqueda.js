@@ -128,7 +128,7 @@ function formatResultProducto(repo){
 function formatSelectionP(repo) {
 
   
-  if(repo.stock !== 0){
+  if(repo){
 
   setPantallaCargando()  
   $("#codigo-data").text(repo.codigo)
@@ -151,10 +151,7 @@ function formatSelectionP(repo) {
 
   }else{
 
-    Toast.fire({
-      icon: 'error',
-      title: 'Este producto ya no tiene stock'
-    });
+    toastr.error('La cantidad no puede ser menor a 0', 'Error')
     
     $("#lista-series").empty().append(`
                     <div class="list-group-item list-group-item-action" aria-current="true">

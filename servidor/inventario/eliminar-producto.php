@@ -5,12 +5,12 @@ if ($_POST) {
 
     $id = $_POST['id'];
 
-    $insert = "DELETE FROM refacciones WHERE id= ?";
+    $insert = "DELETE FROM inventario WHERE id= ?";
     $resp = $con->prepare($insert);
     $resp->execute([$id]);
     $resp->closeCursor();
 
-    $response = array("status"=>true, "mensj"=>"La refacción se borró correctamente");
+    $response = array("status"=>true, "mensj"=>"El inventario se borró correctamente");
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
 

@@ -3,7 +3,9 @@ session_start();
 
  if (empty($_SESSION["id"])) {
     header("Location:login.php");
-} ?> 
+} 
+date_default_timezone_set('America/Matamoros');
+?> 
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,7 +22,7 @@ session_start();
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-    <title>Inventario clima | AireEx manager</title>
+    <title>Nueva entrada | Toolcrib Manager</title>
 
     <link href="css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" />
@@ -28,15 +30,88 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" />
-
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+	
     <!-- Librerias del plugin input file bootstrap -->
     <!-- <link href="vendor/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="vendor/bootstrap-fileinput-master/themes/explorer-fa5/theme.css" media="all" rel="stylesheet" type="text/css"/>
     -->
+    <style>
+           .select2 {
+width:100%!important;
+}
+
+.loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255,255,255, 0.7);;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: 1s all;
+            /* opacity: 0; */
+        }
+        .loading.show {
+            opacity: 1;
+        }
+        .loading .spin {
+            border: 3px solid hsla(185, 100%, 62%, 0.2);
+            border-top-color: #3cefff;
+            border-radius: 50%;
+            width: 3em;
+            height: 3em;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }    
+        
+        
+        
+.dotting {
+display: inline-block; width: 10px; min-height: 2px;
+padding-right: 2px;
+border-left: 2px solid currentColor; border-right: 2px solid currentColor;
+background-color: currentColor; background-clip: content-box;
+box-sizing: border-box;
+-webkit-animation: dot 2s infinite step-start both;
+animation: dot 2s infinite step-start both;
+/* *zoom: expression(this.innerHTML = '...'); */ /* IE7 */
+}
+.dotting:before { content: '...'; } /* IE8 */
+.dotting::before { content: ''; }
+:root .dotting { margin-left: 2px; padding-left: 2px; } /* IE9+ */
+ 
+@-webkit-keyframes dot {
+25% { border-color: transparent; background-color: transparent; }
+50% { border-right-color: transparent; background-color: transparent; }
+75% { border-right-color: transparent; }
+}
+@keyframes dot {
+25% { border-color: transparent; background-color: transparent; }
+50% { border-right-color: transparent; background-color: transparent; }
+75% { border-right-color: transparent; }
+}
+    </style>
 </head>
 
 <body>
+<div id="area-loading">
+    <div class="loading show">
+        <div style="display:flex; flex-direction:column; justify-content:center;">
+            <div class="spin"></div><br>
+            <span><b>Cargando...<span class = "dotting"> </span></b></span>
+        </div>
+    </div>
+  </div>
+
     <div class="wrapper">
 
         <?php
@@ -52,7 +127,7 @@ session_start();
 
                     <div class="row mb-2 justify-content-center">
                         <div class="col-12 col-md-6">
-                            <h1 class="h3 mb-3">Registrar nuevo material/herramienta al inventario</h1>
+                            <h1 class="h3 mb-3">Registrar entrada de material</h1>
                         </div>
                     </div>
 
@@ -126,12 +201,21 @@ session_start();
 
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Mis scripts -->
-    <script src="js/inventario/agregar-item.js"></script>
+    <!-- <script src="js/inventario/agregar-item.js"></script> -->
+    <script src="js/busqueda/busqueda.js"></script>
+    <script src="js/entradas/agregar-pre.js"></script>
+    <script src="js/entradas/nueva-entrada.js"></script>
+    <script src="js/salidas/tabla-presalida.js"></script>
     <!-- <script src="js/clientes/traer-lista.js"></script>
     <script src="js/clientes/eliminar-cliente.js"></script>
+    
  -->
+ <script>
+    $(window).on("load", quitarLoad);
+ </script>
 </body>
 
 </html>

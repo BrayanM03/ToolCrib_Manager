@@ -14,14 +14,14 @@ date_default_timezone_set('America/Matamoros');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="css/app.css" rel="stylesheet">
-    <title>Ticket salida</title>
+    <title>Ticket entrada</title>
 </head>
 <body>
     <div class="container mt-5" style="border: 1px dashed #c3c3c3; padding:15px; border-radius: 8px">
 
     <div class="row mb-2">
         <div class="col-12 col-md-12 text-end">
-            <h5 class="card-title mb-0" id="title-card">Ticket de salida #<?php echo $_GET['id'] ?></h5>
+            <h5 class="card-title mb-0" id="title-card">Ticket de entrada #<?php echo $_GET['id'] ?></h5>
         </div>
 
     </div>
@@ -29,7 +29,7 @@ date_default_timezone_set('America/Matamoros');
 
     <?php
                
-                $select = "SELECT * FROM salidas WHERE id = ?";
+                $select = "SELECT * FROM entradas WHERE id = ?";
                 $re = $con->prepare($select);
                 $re->execute([$_GET['id']]);
 
@@ -44,19 +44,6 @@ date_default_timezone_set('America/Matamoros');
     <img src="img/logo.jpg" alt="Charles Hall" class="img-fluid" style="width: 130px; padding-left:17px;" width="100" height="100" />
     </div>
 
-    <div class="col-12 col-md-9">
-        <div class="row mt-5 mb-4">
-            <div class="col-12 col-md-8 text-start">
-                <h5 class="card-title mb-0" id="title-card">Nombre empleado: </h5>
-                <label for="">'. $row->nombre .'</label>
-            </div>
-
-            <div class="col-12 col-md-4 text-start">
-                <h5 class="card-title mb-0" id="title-card">Numero de empleado: </h5>
-                <label for="">'. $row->no_empleado .'</label>
-            </div>
-        </div>
-    </div>
     
 
     </div>
@@ -66,10 +53,7 @@ date_default_timezone_set('America/Matamoros');
     
 
     <div class="row  mb-5 justify-content-end">
-        <div class="col-12 col-md-2 text-start">
-            <h5 class="card-title mb-0" id="title-card">Area: </h5>
-            <label for="">'. $row->area .'</label>
-        </div>
+        
         <div class="col-12 col-md-2 text-start">
             <h5 class="card-title mb-0" id="title-card">Fecha: </h5>
             <label for="">'. $row->fecha .'</label>
@@ -111,7 +95,7 @@ date_default_timezone_set('America/Matamoros');
         </li>
         <?php
                 session_start();
-                $contar = "SELECT * FROM detalle_salida WHERE salida_id = ?";
+                $contar = "SELECT * FROM detalle_entrada WHERE salida_id = ?";
                 $re = $con->prepare($contar);
                 $re->execute([$_GET['id']]);
 

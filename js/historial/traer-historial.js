@@ -14,7 +14,7 @@ $(document).ready(function () {
         order: [0, 'desc'],
         columns:  [
             { data:0, title:'#' },
-            { data:1, title:'Nombre' },
+            { data:1, title:'Ticket' },
             { data:2, title:'# empleado' },
             { data:3, title:'Area' },
             { data:4, title:'Fecha' },
