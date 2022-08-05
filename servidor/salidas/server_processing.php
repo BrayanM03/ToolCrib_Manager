@@ -21,7 +21,7 @@ session_start();
 // DB table to use
 $table = 'pre_salida';
 $session_id = $_SESSION['id'];
-
+$where = "usuario_id = " . $session_id;
 // Table's primary key
 $primaryKey = 'id';
 //$sucursal_id = $_GET['sucursal_id'];
@@ -80,7 +80,7 @@ $sql_details = array(
 require( '../database/ssp.class.php' );
 
 echo json_encode(
-	SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, "usuario_id = '$session_id'")
+	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns, $where)
 );
 
 
