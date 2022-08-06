@@ -10,7 +10,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="index.php">
+                <a class="sidebar-link" href="panel.php">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Panel</span>
                 </a>
             </li>
