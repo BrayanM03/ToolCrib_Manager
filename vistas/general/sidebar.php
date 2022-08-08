@@ -45,7 +45,11 @@
                                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Salidas</span>
                                 </a>
                             </li>
-                            
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="historial-eliminados.php">
+                                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Eliminados</span>
+                                </a>
+                            </li>
                         </div>
                     </div>
 
