@@ -1,37 +1,62 @@
 
 $(document).ready(function () {
 
-    let sucursal_id = $("#user-data").attr("id_sucursal");
-    console.log(sucursal_id);
+    let sucursal_id = getParameterByName("store_id")
     tabla = $('#example').DataTable({
         processing: true,
         serverSide: true,
         ajax:{
-            url: 'servidor/historial/server_processing-eliminados.php?sucursal_id=' + sucursal_id,
+            url: 'servidor/inventario/server_processing-min.php?sucursal_id=' + sucursal_id,
             dataType: 'json'
         },
         responsive: true,
         order: [0, 'desc'],
         columns:  [
             { data:0, title:'#' },
-            { data:1, title:'Codigo' },
-            { data:2, title:'Descripcion' },
+            { data:2, title:'Codigo' },
+            { data:11, title:'Descripcion' },
+            { data:null, title:'Stock', render:function(row, data, dataIndex){ 
+             
+              if( parseInt(row[4]) == 0){
+                return `${row[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-danger"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
+              }else if( parseInt(row[4]) ==  parseInt(row[5])){
+                return `${row[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-warning"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
+              }else if( parseInt(row[4]) >=  parseInt(row[6])){
+                return `${row[4]} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle text-warning"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
+              }else{
+                return row[4]
+              }
+             }},
             { data:3, title:'Costo' },
-            { data:4, title:'Fecha' },
-            { data:5, title:'Hora' },
-            { data:6, title:'Usuario' },
-
+            { data:1, title:'Proveedor' },
+            { data:7, title:'Area' },
+            { data:5, title:'Minimo' },
+            { data:6, title:'Maximo' },
+            { data:9, title:'Locación' },
+            { data:10, title:'Categoria' },
+            { data: null, title:'Imagen', render:function(data,row){
+              return `<img src="./img/productos/${data[14]}.jpg?t=${data[15]}" width="50" height="50">`
+            }},
             { data:null, title:'Opciones', render: function(row){
                 return `
                 <div class='row'>
                     <div class='col-12 col-md-12'>
-                        
-                        <div class="btn btn-danger" onclick="eliminarReg(${row[0]})"><i class="fa-solid fa-trash"></i></div>
+                        <div class="btn btn-primary" onclick="configurationPanel(${row[0]})"><i class="fa-solid fa-pen-to-square"></i></div>
+                        <div class="btn btn-danger" onclick="eliminarProducto(${row[0]})"><i class="fa-solid fa-trash"></i></div>
                     </div>
                 </div>
                 `
             }}
         ],
+        "createdRow": function( row, data, dataIndex){
+          if(  parseInt(data[4]) <=   parseInt(data[5])){
+              $(row).addClass('table-danger');
+          }else if( parseInt(data[4]) >= parseInt(data[6])){
+              $(row).addClass('table-success');
+          }else if(  parseInt(data[4]) == 0){
+              $(row).addClass('.redClass');
+          }
+      },
         
             language: language_options,
     
@@ -41,12 +66,18 @@ $(document).ready(function () {
     });
 });
 
+function editarProducto(id){
+  let sucursal_id = getParameterByName("store_id")
+  let store_name = getParameterByName("name")
+    window.location.href = "actualizar-producto.php?id_product="+ id +"&store_id=" + sucursal_id + "&name="+ store_name;
 
+}
 
-function eliminarReg(id_elimi){
+function eliminarProducto(id_product){
   Swal.fire({
     icon: "question",
-    html: "<b>¿Seguro de eliminar este registro?</b>",
+    html: "<b>¿Seguro de eliminar este producto?</b>"
+    ,
     confirmButtonText: "Si",
     showCancelButton: true,
     cancelButtonText: "Mejor no"
@@ -54,23 +85,24 @@ function eliminarReg(id_elimi){
     if(response.isConfirmed) {
   
       let dato = {
-        id: id_elimi,
+        id: id_product,
         type: "eliminacion",
     };
 
       $.ajax({
         type: "POST",
-        url: "servidor/historial/eliminar-reg-eliminacion.php",
+        url: "servidor/inventario/eliminar-producto.php",
         data: dato,
         dataType: "JSON",
         success: function (response) {
         
-       tabla.ajax.reload( null, false)
+       
 
         Toast.fire({
           icon: 'success',
           title: response.mensj
         })
+        tabla.ajax.reload( null, false);
           
         }
     });

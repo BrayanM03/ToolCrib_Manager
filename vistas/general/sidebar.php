@@ -101,6 +101,12 @@
                                             <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Inventario</span>
                                         </a>
                                     </li>
+
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="minimos.php?store_id=<?php echo $row['id'] ?>&name=<?php echo $row['nombre'] ?>">
+                                            <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Registros en minimo</span>
+                                        </a>
+                                    </li>
                                    
                                 </div>
                             </div>
