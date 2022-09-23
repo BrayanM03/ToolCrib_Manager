@@ -59,7 +59,8 @@
 							<div class="card-body">
 								<div class="m-sm-4">
 									<div class="text-center">
-										<img src="img/logo.jpg" alt="Charles Hall" class="img-fluid" width="100" height="100" />
+										<img src="img/mabac_logo.jpg" alt="Charles Hall" class="img-fluid" width="200" height="200" /><br>
+										<h3><b>Toolcrib Manager</b></h3>
 									</div>
 									<form>
 										<div class="mb-3">
